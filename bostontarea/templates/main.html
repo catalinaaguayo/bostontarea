@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+  <title>Boston Dataset</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style>
+  body {
+      position: relative; 
+  }
+</style>
+</head>
+
+<!--Body-->
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="background-color: #002b38;">
+
+    <!--Nav-->
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+      <a class="navbar-brand" href="#">
+        <img src="/static/logo1.png" alt="logo" style="width:50px;">
+    </a>
+    <a class="navbar-brand" href="#">Boston DataSet</a>
+</nav>
+
+<!--Sección 1: Banner-->
+<div id="section1" class="container-fluid text-center" style="padding-top:140px;padding-bottom:20px;background-color: #002b38;">
+    <h1 style="color: white;">Clasificación Boston</h1>      
+    <h4 style="color: white;">Introducción a las técnicas de análisis de datos</h4><br>
+    <a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html" class="btn btn-warning" role="button">Dataset original</a><br><br>
+    <h6 style="color: white;">Esta página tiene por objetivo predecir el valor de una casa en Boston, en base a datos ingresados por el usuario</h6>
+    <h6 style="color: white;">El dataset original contiene 14 atributos, de los cuales solo 3 se utilizaron para realizar las predicciones</h6><br>
+
+<table class="table table-borderless" align="center" style="width:50%;">
+    <thead class="text-left">
+      <tr class="text-warning">
+        <th><h6 style=" width:20%; font-weight: lighter;">ATRIBUTO<h6></th>
+        <th><h6 style=" width:80%; font-weight: lighter;">DESCRIPCIÓN<h6></th>
+      </tr>
+    </thead>
+    <tbody class="text-left">
+      <tr>
+        <td><h6 style="color: white; font-weight: bold;">Habitaciones<h6></td>
+        <td><h6 style="color: white; font-weight: 100;">Número promedio de habitaciones por vivienda<h6></td>
+      </tr>
+      <tr>
+        <td><h6 style="color: white;font-weight: bold;">Propietarios<h6></td>
+        <td><h6 style="color: white;font-weight: 100;">Porcentaje de propietarios de viviendas en el vecindario considerado "clase baja"<h6></td>
+      </tr>
+      <tr>
+        <td><h6 style="color: white;font-weight: bold;">Estudiantes<h6></td>
+        <td><h6 style="color: white;font-weight: 100;">Proporción alumno-profesor por ciudad<h6></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--Sección 2: Descripción-->
+
+<div id="section2" class="container-fluid text-center" style="padding-top:20px;padding-bottom:20px">
+    <div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+<div class="card-group">
+  <div class="card" style="background-color: #003644;">
+    <div class="card-header" style="color: black; background-color: white;">Problema</div>
+    <div class="card-body text-center">
+        <img src="/static/problema.png" alt="logo" style="width:150px;">
+      <p class="card-text" style="color: white;">Gran cantidad de datos que son recopilados y que influyen en el precio de las casas.</p>
+    </div>
+  </div>
+  <div class="card" style="background-color: #003644;">
+    <div class="card-header" style="color: black; background-color: white;">Contexto</div>
+    <div class="card-body text-center">
+      <img src="/static/contexto.png" alt="logo" style="width:150px;">
+      <p class="card-text" style="color: white;">Los datos fueron recopilados en 1978, en los suburbios de Boston, Massachusetts.</p>
+    </div>
+  </div>
+  <div class="card" style="background-color: #003644;">
+    <div class="card-header" style="color: black; background-color: white;">Modelo utilizado</div>
+    <div class="card-body text-center">
+        <img src="/static/modelo.png" alt="logo" style="width:150px;">
+      <p class="card-text" style="color: white;">Árbol de regresión</p>
+    </div>
+  </div>
+  </div> 
+  </div>
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+</div>
+
+
+<!--Sección 3: Predecir-->
+<div id="section3" class="container-fluid text-center" style="padding-top:20px;padding-bottom:20px">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <div class="card">
+                 <!-- Título sección -->
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong>Ingresar datos</strong>
+                </h5>
+                <!-- Cuerpo sección -->
+                <div class="card-body px-lg-5 pt-0">
+                <!-- Comienzo formulario -->
+                <form action="{{ url_for('main') }}" method="POST" class="text-center" style="color: black;">
+
+                <!-- Rooms -->
+                <div class="md-form mt-3">
+                    <label for="habitaciones">Habitaciones</label>
+                    <input id="habitaciones" name="habitaciones" class="form-control" type="number">
+                   
+                </div>
+
+                <!-- Population -->
+                <div class="md-form mt-3">
+                    <label for="propietarios">Propietarios</label>
+                    <input id="propietarios" name="propietarios" class="form-control" type="number">
+                    
+                </div>
+
+                <!-- Ratio -->
+                <div class="md-form mt-3">
+                    <label for="estudiantes">Estudiantes</label>
+                    <input id="estudiantes" name="estudiantes" class="form-control" type="number">
+                    
+                </div>
+
+                <!-- Send button -->
+                <div class="md-form mt-3">
+                <button class="btn btn-warning" type="submit">Predecir</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-3">
+  <div class="result" align="center">
+     <p style="font-size:30px; color: white; font-weight: lighter;">Valor predecido</p>
+    {% if result %}
+    <p style="font-size:30px; color: white;">USD {{ result }}</p>
+    {% for variable, value in original_input.items() %}
+    <b style="color: white;">{{ variable }} : {{ value }}</b><br>
+    {% endfor %}
+
+    <br>
+    <br> 
+
+    {% endif %}
+</div>  
+
+</div>
+<div class="col-sm-3"></div>
+</div>
+</div>
+
+<br>
+
+</body>
+</html>
